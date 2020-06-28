@@ -48,7 +48,7 @@
 
         // 是否回调携带了code参数
         bool hasCode = QueryHelpers.ParseQuery(uri.Query).TryGetValue("code", out Microsoft.Extensions.Primitives.StringValues code);
-        Console.WriteLine("哈哈:" + hasCode.ToString());
+        
         if (hasCode)
         {
             var access_token = await Http.GetFromJsonAsync<ServiceResult<string>>($"/auth/access_token?code={code}");
