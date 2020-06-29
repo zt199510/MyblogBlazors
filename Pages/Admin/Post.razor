@@ -184,7 +184,10 @@
     /// <returns></returns>
     private async Task SubmitAsync()
     {
-        if (string.IsNullOrEmpty(tags) || input.CategoryId == 0)
+        Console.WriteLine("哈哈");
+        Console.WriteLine(tags);
+        Console.WriteLine(input?.CategoryId);
+        if (string.IsNullOrEmpty(tags) || input?.CategoryId == 0)
         {
             await Alert();
         }
@@ -192,7 +195,7 @@
         input.Tags = tags.Split(",");
 
         var responseMessage = new HttpResponseMessage();
-
+        Console.WriteLine(input.Tags);
         if (Id.HasValue)
             responseMessage = await Http.PutAsJsonAsync($"/blog/post?id={Id}", input);
         else
